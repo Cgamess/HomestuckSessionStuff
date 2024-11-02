@@ -1,0 +1,9 @@
+{
+    "_comments_":{
+        "build the struct like this:":{
+            "file-path":"name",
+            "example":"----------------------------------------------------------------------------",
+            "./files/types.json":"ts"
+        }
+    }
+}
