@@ -73,7 +73,7 @@ def Xor(codes:list[captialogCode]|tuple[captialogCode]|set[captialogCode]):
     #print(outCode,len(outCode))
     return(captialogCode(validSizes,outCode))
 
-"""
+
 codes = [
     captialogCode([8,48],90),
     captialogCode([8,48],125),
@@ -81,4 +81,3 @@ codes = [
 print(Or(codes))
 print(And(codes))
 print(Xor(codes))
-"""

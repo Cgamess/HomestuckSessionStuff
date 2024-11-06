@@ -1,4 +1,5 @@
 import base64
+from base64handle import captialogCodeBase64 as CCB64
 
 class captialogCode:
     def __init__(self, valid_sizes: list[int], code: str | int | list[int]):
@@ -20,12 +21,12 @@ class captialogCode:
             self.intCode = code
             self.binCode = [int(bit) for bit in f"{code:048b}"]
             byte_array = code.to_bytes(6, byteorder='big')
-            self.strCode = base64.b64encode(byte_array).decode()
+            self.strCode = CCB64(byte_array)
 
         elif isinstance(code, str):
             if len(code) not in self.valid_sizes or not all(c.isascii() for c in code):
                 raise ValueError("Error: String code must be a valid Base64 string with appropriate length.")
-            decoded_bytes = base64.b64decode(code)
+            decoded_bytes = CCB64(code,1)
             self.binCode = [int(bit) for byte in decoded_bytes for bit in f"{byte:08b}"]
             print(self.binCode)
             self.binCode = self.binCode[:len(code)*6]
@@ -38,7 +39,7 @@ class captialogCode:
             self.binCode = code
             self.intCode = int(''.join(map(str, code)), 2)
             byte_array = int(''.join(map(str, code)), 2).to_bytes(6, byteorder='big')
-            self.strCode = base64.b64encode(byte_array).decode()
+            self.strCode = CCB64(byte_array)
 
         else:
             raise TypeError("Error: Code must be int, str, or list of int.")
