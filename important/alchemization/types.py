@@ -16,7 +16,7 @@ class captialogCode:
         self.binCode = []
 
         if isinstance(code, int):
-            if not (0 <= code < (1 << 48)):
+            if not (0 <= code < (1 << max(self.valid_sizes)*6)):
                 raise ValueError("Error: Integer code must be a 48-bit integer.")
             self.intCode = code
             self.binCode = [int(bit) for bit in f"{code:048b}"]
@@ -28,7 +28,7 @@ class captialogCode:
                 raise ValueError("Error: String code must be a valid Base64 string with appropriate length.")
             decoded_bytes = CCB64(code,1)
             self.binCode = [int(bit) for byte in decoded_bytes for bit in f"{byte:08b}"]
-            print(self.binCode)
+            #print(self.binCode)
             self.binCode = self.binCode[:len(code)*6]
             self.intCode = int(''.join(map(str, self.binCode)), 2)
             self.strCode = code
