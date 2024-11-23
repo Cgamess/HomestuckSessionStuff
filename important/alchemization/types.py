@@ -1,5 +1,5 @@
 import base64
-from base64handle import captialogCodeBase64 as CCB64
+from important.alchemization.base64handle import captialogCodeBase64 as CCB64
 
 class captialogCode:
     def __init__(self, valid_sizes: list[int], code: str | int | list[int]):

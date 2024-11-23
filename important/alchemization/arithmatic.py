@@ -1,4 +1,4 @@
-from Types import captialogCode
+from important.alchemization.Types import captialogCode
 def orList(vals:list[int|bool]):
     v=0
     for i in vals:
